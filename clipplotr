@@ -384,8 +384,8 @@ if(!is.null(opt$groups)) {
 # Add highlight
 if(!is.null(opt$highlight)) {
 
-  highlight.dt <- data.table(x1 = as.integer(strsplit(opt$highlight, ":")[[1]][1]),
-                             x2 = as.integer(strsplit(opt$highlight, ":")[[1]][2]),
+  highlight.dt <- data.table(x1 = as.integer(strsplit(opt$highlight, ":")[[1]][c(TRUE, FALSE)]),
+                             x2 = as.integer(strsplit(opt$highlight, ":")[[1]][c(FALSE, TRUE)]),
                              y1 = 0,
                              y2 = Inf) # Assumes not facetted with free scales
   p.iclip <- p.iclip + geom_rect(data = highlight.dt, aes(xmin = x1, xmax = x2, ymin = y1, ymax = y2), fill = "grey50", alpha = 0.2)
